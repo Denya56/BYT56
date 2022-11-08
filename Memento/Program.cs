@@ -1,6 +1,7 @@
 ﻿using Memento.SourceFiles.Mediator;
 using Memento.SourceFiles.Memento;
 
+#region Memento
 Console.WriteLine("=====Memento Pattern Example=====\n");
 CareTaker ct = new CareTaker();
 ct.mementos = new List<Memento.SourceFiles.Memento.Memento>();
@@ -15,16 +16,17 @@ life.time = "100 A.D.";
 ct.mementos.Add(life.SaveToMemento());
 
 life.RestoreFromMemento(ct.mementos.Last());
+#endregion
 
+#region Mediator
 Console.WriteLine("\n-----Mediator Pattern Example-----\n");
-SubjectChatroom chatroom = new SubjectChatroom();
+TopicChatroom chatroom = new TopicChatroom();
 chatroom.Participants = new List<Participant>();
-Student student = new Student(chatroom);
-Teacher teacher = new Teacher(chatroom);
-chatroom.Participants.Add(student);
-chatroom.Participants.Add(teacher);
-chatroom.Student = student;
-chatroom.Teacher = teacher;
-student.Send("Hello! Did you already checked our test?");
-teacher.Send("No, not yet");
-student.Send("Oh ok");
+Guest guest = new Guest(chatroom);
+Owner owner = new Owner(chatroom);
+chatroom.Participants.Add(guest);
+chatroom.Participants.Add(owner);
+guest.Send("Hello! Did you see a new product");
+owner.Send("No, not yet");
+guest.Send("Oh ok");
+#endregion

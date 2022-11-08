@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Memento.SourceFiles.Mediator
 {
-    public class Teacher : Participant
+    public class Owner : Participant
     {
-        public Teacher(IChatroom chatroom) : base(chatroom) { }
+        public Owner(IChatroom chatroom) : base(chatroom) { }
         public override void Notify(string message)
         {
-            Console.WriteLine($"To teacher: {message}");
+            Console.WriteLine($"To owner: {message}");
         }
     }
 }
